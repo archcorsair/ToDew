@@ -5,9 +5,11 @@ mongoose.Promise = Promise;
 
 module.exports = {
 
-  getAllToDos: (req, res, next) => {
-    res.send('Sending you all your todos!');
-    next();
+  getAllToDos: (req, res) => {
+    // Response with everything in the DB
+    ToDo.find({}).then((results) => {
+      res.json(results);
+    });
   },
 
   getToDo: (req, res, next, gettodo) => {
