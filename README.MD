@@ -17,3 +17,6 @@
 3. [React](https://facebook.github.io/react/) for front end.
 4. [Bootstrap](http://getbootstrap.com/) because I like it.
 5. [MongoDB](https://www.mongodb.com/) for storing data.
+
+## License
+This project is licensed under the terms of MIT License
