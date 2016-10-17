@@ -1,3 +1,8 @@
+const mongoose = require('mongoose');
+const ToDo = require('./todoModel');
+
+mongoose.Promise = Promise;
+
 module.exports = {
 
   getAllToDos: (req, res, next) => {
@@ -16,8 +21,15 @@ module.exports = {
   },
 
   postToDo: (req, res, next) => {
-    res.send('Saving new todo!');
-    next();
+    // Create a new ToDo document for MonogoDB
+    const newToDo = new ToDo({
+      content: req.body.content,
+      author: req.body.author,
+    });
+    // Save ToDo to MonogoDB
+    newToDo.save().then(() => {
+      next();
+    });
   },
 
   deleteToDo: (req, res, next, deletetodo) => {

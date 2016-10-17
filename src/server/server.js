@@ -1,9 +1,18 @@
 const handler = require('./request-handler.js');
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// Replace Mongoose's outdated promise library
 mongoose.Promise = Promise;
 const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/todewdev');
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Handle params
 app.param('gettodo', handler.getToDo);
@@ -28,7 +37,7 @@ app.put('/todos/:puttodo', handler.putToDo);
 app.delete('/todos/:deletetodo', handler.deleteToDo);
 //
 // Get outta here!
-app.post('/*', (res) => { res.sendStatus(404); });
+app.post('/*', (req, res) => { res.sendStatus(404); });
 //
 // Server starts
 app.listen(3000, () => {
