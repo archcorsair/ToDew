@@ -20,16 +20,20 @@ module.exports = {
     next();
   },
 
-  postToDo: (req, res, next) => {
+  postToDo: (req, res) => {
     // Create a new ToDo document for MonogoDB
-    const newToDo = new ToDo({
-      content: req.body.content,
-      author: req.body.author,
-    });
-    // Save ToDo to MonogoDB
-    newToDo.save().then(() => {
-      next();
-    });
+    if (!req.body.content && !req.body.author) {
+      res.send('Bad Todo Provided. Try again');
+    } else {
+      const newToDo = new ToDo({
+        content: req.body.content,
+        author: req.body.author,
+      });
+      // Save ToDo to MonogoDB
+      newToDo.save().then(() => {
+        res.sendStatus(201);
+      });
+    }
   },
 
   deleteToDo: (req, res, next, deletetodo) => {
