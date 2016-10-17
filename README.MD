@@ -1,4 +1,4 @@
-# To Dew
+# To Dew :droplet:
 
 ### Your Friendly Weather/To-Do App
 
