@@ -1,15 +1,14 @@
-const mongoose = require('mongoose');
-const ToDo = require('./todoModel');
+const ToDo = require('../models/todoModel.js');
+const util = require('./utils.js');
 
-mongoose.Promise = Promise;
 
 module.exports = {
 
-  getAllToDos: (req, res) => {
+  getAllToDos: (req, res, next) => {
     // Response with everything in the DB
-    ToDo.find({}).then((results) => {
+    util.doGetAllToDos().then((results) => {
       res.json(results);
-    });
+    }, next);
   },
 
   getToDo: (req, res, next, gettodo) => {
@@ -22,19 +21,19 @@ module.exports = {
     next();
   },
 
-  postToDo: (req, res) => {
+  postToDo: (req, res, next) => {
     // Create a new ToDo document for MonogoDB
-    if (!req.body.content && !req.body.author) {
-      res.send('Bad Todo Provided. Try again');
+    if (!req.body.content || !req.body.author) {
+      res.send('Malformed To-Do. Try again');
     } else {
       const newToDo = new ToDo({
         content: req.body.content,
         author: req.body.author,
       });
       // Save ToDo to MonogoDB
-      newToDo.save().then(() => {
+      util.doPostToDo(newToDo).then(() => {
         res.sendStatus(201);
-      });
+      }, next);
     }
   },
 

@@ -1,4 +1,4 @@
-const handler = require('./request-handler.js');
+const handler = require('./helpers/request-handler.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
