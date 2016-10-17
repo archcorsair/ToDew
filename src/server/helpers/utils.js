@@ -7,6 +7,8 @@ module.exports = {
 
   doGetAllToDos: () => ToDo.find({}),
 
+  doGetToDo: currentId => ToDo.findById({ _id: currentId }),
+
   doPostToDo: newToDo => newToDo.save(),
 
 };

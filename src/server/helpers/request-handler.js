@@ -1,6 +1,6 @@
 const ToDo = require('../models/todoModel.js');
 const util = require('./utils.js');
-
+const mongoose = require('mongoose');
 
 module.exports = {
 
@@ -8,12 +8,20 @@ module.exports = {
     // Response with everything in the DB
     util.doGetAllToDos().then((results) => {
       res.json(results);
-    }, next);
+    }, next); // If there was a promise rejection next will be called
   },
 
   getToDo: (req, res, next, gettodo) => {
-    res.send(`Sending todo with id: ${gettodo}`);
-    next();
+    if (gettodo.length !== 24) {
+      res.send('Malformed ID. Try again');
+    }
+
+    // Converts the gettodo string into a proper ObjectId
+    const currentId = new mongoose.Types.ObjectId(gettodo);
+
+    util.doGetToDo(currentId).then((results) => {
+      res.json(results);
+    }, next);
   },
 
   putToDo: (req, res, next, puttodo) => {
