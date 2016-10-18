@@ -5,17 +5,17 @@ mongoose.Promise = Promise;
 
 module.exports = {
 
-  doGetAllToDos: () => ToDo.find({}),
+  doGetAllToDos: () => ToDo.find({}).select('-__v'),
 
   doGetToDo: (gettodo) => {
     // Convert string id into mongoose ObjectId
     const currentId = new mongoose.Types.ObjectId(gettodo);
-    return ToDo.findById({ _id: currentId });
+    return ToDo.findById({ _id: currentId }).select('-__v');
   },
 
   doPutToDo: (gettodo, content) => {
     const currentId = new mongoose.Types.ObjectId(gettodo);
-    return ToDo.findOneAndUpdate({ _id: currentId }, { content }, { new: true });
+    return ToDo.findOneAndUpdate({ _id: currentId }, { content }, { new: true }).select('-__v');
   },
 
   doPostToDo: newToDo => newToDo.save(),
