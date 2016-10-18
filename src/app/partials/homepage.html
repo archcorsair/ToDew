@@ -1,12 +1,29 @@
 <div ng-controller="HomepageController">
-  <h1 class='header-homepage'>To Dew 💧</h1>
-  <div class='weather-view'><center><img src='app/assets/sun.svg'></img></center></div>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="New Note" ng-model='newToDo'>
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click='addToDo()'>Submit</button>
-      </span>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="col-md-4">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="">To Dew 💧</a>
+      </div>
     </div>
+    <div class="col-md-4">
+      <center>
+      <form class="navbar-form" role="search">
+        <div class="form-group">
+          <input ng-keyup="$event.keyCode == 13 && addToDo()" type="text" style="text-align:center;" class="form-control todo-entry" placeholder="New Note" ng-model='newToDo'>
+        </div>
+      </form>
+    </center>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</nav>
+  <div class='weather-view'>
+    <center><img src='app/assets/sun.svg'></img><br />
+      Good Afternoon
+    </center>
+  </div>
+
     <div class="list-group todo-list">
       <a href="" class="list-group-item" ng-class="{strike:todo.done}" ng-click='done()' ng-repeat='(key, value) in todos'>
         {{value.content}}

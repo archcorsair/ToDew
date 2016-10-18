@@ -2,6 +2,7 @@ body {
 background: #70e1f5 !important;
 background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194) !important;
 background: linear-gradient(to left, #70e1f5 , #ffd194) !important;
+padding-top: 70px;
 }
 
 .glyphicon {
@@ -20,6 +21,12 @@ background: linear-gradient(to left, #70e1f5 , #ffd194) !important;
 
 .header-homepage {
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+.weather-view {
+  font-family: 'Quicksand', sans-serif;
+}
+.navbar-brand {
   font-family: 'Quicksand', sans-serif;
 }
 /*.background-image {

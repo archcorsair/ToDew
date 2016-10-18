@@ -3,6 +3,7 @@ module.exports = {
   "rules": {
       "no-console": "off",
       "no-param-reassign": "off",
+      "angular/controller-as": "off",
       // "func-names": "off"
     }
 
