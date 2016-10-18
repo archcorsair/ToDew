@@ -5,7 +5,7 @@ mongoose.Promise = Promise;
 
 module.exports = {
 
-  doGetAllToDos: () => ToDo.find({}).select('-__v'),
+  doGetAllToDos: author => ToDo.find({}).where('author').equals(author.toLowerCase()).select('-__v'),
 
   doGetToDo: (gettodo) => {
     // Convert string id into mongoose ObjectId

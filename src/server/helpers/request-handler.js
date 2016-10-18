@@ -3,11 +3,11 @@ const util = require('./utils.js');
 
 module.exports = {
 
-  getAllToDos: (req, res, next) => {
-    // Response with everything in the DB
-    util.doGetAllToDos().then((results) => {
+  getAllToDos: (req, res, next, author) => {
+    // Response with author's todos
+    util.doGetAllToDos(author).then((results) => {
       res.json(results);
-    }, next); // If there was a promise rejection next will be called
+    }, next);
   },
 
   getToDo: (req, res, next, gettodo) => {
@@ -19,6 +19,7 @@ module.exports = {
     }, next);
   },
 
+  // Update a todo
   putToDo: (req, res, next, puttodo) => {
     if (!util.validId(puttodo) || !req.body.content) {
       res.send('Please supply a valid id and content.');
@@ -29,6 +30,7 @@ module.exports = {
     }, next);
   },
 
+  // Post a new todo
   postToDo: (req, res, next) => {
     // Create a new ToDo document for MonogoDB
     if (!req.body.content || !req.body.author) {
@@ -36,16 +38,19 @@ module.exports = {
     } else {
       const newToDo = new ToDo({
         content: req.body.content,
-        author: req.body.author,
+        author: req.body.author.toLowerCase(),
       });
       // Save ToDo to MonogoDB
       util.doPostToDo(newToDo).then((result) => {
         const message = result.content;
-        res.send(`You posted a note:\n${message}`);
+        // eslint-disable-next-line no-underscore-dangle
+        const id = result._id;
+        res.send(`You posted a note:\n"${message}"\nNote ID: ${id}`);
       }, next);
     }
   },
 
+  // Delete a todo
   deleteToDo: (req, res, next, deletetodo) => {
     if (!util.validId(deletetodo)) {
       res.send('Please supply a valid id.');

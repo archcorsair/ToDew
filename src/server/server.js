@@ -18,11 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.param('gettodo', handler.getToDo);
 app.param('puttodo', handler.putToDo);
 app.param('deletetodo', handler.deleteToDo);
+app.param('author', handler.getAllToDos);
 
 // // Routes // //
 //
-// Get all the todos
-app.get('/todos', handler.getAllToDos);
+// Get all the todos for a specific author
+app.get('/todos/author/:author', handler.getAllToDos);
 //
 // Get a single todo
 app.get('/todos/:gettodo', handler.getToDo);
