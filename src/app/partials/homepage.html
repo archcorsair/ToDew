@@ -15,7 +15,13 @@
       </form>
     </center>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form class="navbar-form" role="search">
+        <div class="form-group">
+      <input ng-keyup="$event.keyCode == 13 && setAuthorAndGetData()" type="text" style="text-align:center;" class="form-control author-entry" placeholder="Your Name" ng-model='authorName'>
+    </div>
+  </form>
+    </div>
   </div>
 </nav>
   <div class='weather-view'>
@@ -25,8 +31,8 @@
   </div>
 
     <div class="list-group todo-list">
-      <a href="" class="list-group-item" ng-class="{strike:todo.done}" ng-click='done()' ng-repeat='(key, value) in todos'>
-        {{value.content}}
+      <a href="" class="list-group-item" ng-class="{strike:todo.done}" ng-click='done()' ng-repeat='todo in todos'>
+        {{todo}}
         <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
       </a>
     </div>

@@ -1,14 +1,24 @@
 angular.module('todew')
 
 .controller('HomepageController', ($scope, $http, $log) => {
-  $http({
-    method: 'GET',
-    url: '/todos/author/daniel',
-  }).then((response) => {
-    $log.log('response: ', response);
-  }, (error) => {
-    $log.error(error);
-  });
+  $scope.getData = (authorName) => {
+    $http({
+      method: 'GET',
+      url: `/todos/author/${authorName}`,
+    }).then((response) => {
+      // $log.log('response: ', response.data);
+      response.data.forEach((todo) => {
+        $scope.todos.push(todo.content);
+      });
+    }, (error) => {
+      $log.error(error);
+    });
+  };
+
+  $scope.setAuthorAndGetData = () => {
+    $scope.currentAuthor = $scope.authorName;
+    $scope.getData($scope.authorName.toLowerCase());
+  };
 
   $scope.addToDo = () => {
     $log.log('Adding a todo!', $scope.newToDo);
@@ -18,5 +28,5 @@ angular.module('todew')
   $scope.done = () => {
     $scope.todo.done = true;
   };
-  $scope.todos = [{ content: 'An example todo' }, { content: 'I am generated dynamically!' }];
+  $scope.todos = [];
 });
