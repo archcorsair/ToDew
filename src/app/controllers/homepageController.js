@@ -6,7 +6,6 @@ angular.module('todew')
       method: 'GET',
       url: `/todos/author/${authorName}`,
     }).then((response) => {
-      $log.log(response);
       response.data.forEach((todo) => {
         $scope.todos.push(todo);
       });
@@ -38,11 +37,22 @@ angular.module('todew')
     }
   };
 
-  $scope.deleteToDo = () => {
-    // if (!$scope.currentAuthor) {
-    //   $log.error('No Username Specified!');
-    // } else {
-    //
-    // }
+  $scope.deleteTodo = (event) => {
+    if (!$scope.currentAuthor) {
+      $log.error('No Username Specified!');
+    } else {
+      const id = event.target.id;
+      $http({
+        method: 'DELETE',
+        url: `/todos/${id}`,
+      }).then((response) => {
+        $log.log(response.data);
+        // REALLY BAD WAY OF UPDATING THE PAGE :D
+        // TODO: FIX ME
+        $scope.setAuthorAndGetData();
+      }, (error) => {
+        $log.error(error);
+      });
+    }
   };
 });
