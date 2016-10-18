@@ -8,7 +8,7 @@ module.exports = {
   doGetAllToDos: author => ToDo.find({}).where('author').equals(author.toLowerCase()).select('-__v'),
 
   doGetToDo: (gettodo) => {
-    // Convert string id into mongoose ObjectId
+    // Convert stringified ID to Mongoose ObjectId
     const currentId = new mongoose.Types.ObjectId(gettodo);
     return ToDo.findById({ _id: currentId }).select('-__v');
   },

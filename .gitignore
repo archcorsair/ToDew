@@ -1,8 +1,9 @@
 # Mac Stuff
 .DS_Store
 
-# Node
+# NPM & Bower
 node_modules
+bower_components
 
 # Weather
 config.js

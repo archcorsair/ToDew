@@ -20,21 +20,21 @@ app.param('puttodo', handler.putToDo);
 app.param('deletetodo', handler.deleteToDo);
 app.param('author', handler.getAllToDos);
 
-// // Routes // //
-//
-// Get all the todos for a specific author
+// // // // Routes // // // //
+//                          //
+// Get all todos by author  //
 app.get('/todos/author/:author', handler.getAllToDos);
 //
-// Get a single todo
+// Get a single todo by id
 app.get('/todos/:gettodo', handler.getToDo);
 //
 // Post a new todo
 app.post('/todos', handler.postToDo);
 //
-// Update a todo
+// Update a todo by id
 app.put('/todos/:puttodo', handler.putToDo);
 //
-// Delete a todo
+// Delete a todo by id
 app.delete('/todos/:deletetodo', handler.deleteToDo);
 //
 // Get outta here!

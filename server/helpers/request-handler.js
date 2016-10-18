@@ -4,7 +4,6 @@ const util = require('./utils.js');
 module.exports = {
 
   getAllToDos: (req, res, next, author) => {
-    // Response with author's todos
     util.doGetAllToDos(author).then((results) => {
       res.json(results);
     }, next);
@@ -12,14 +11,13 @@ module.exports = {
 
   getToDo: (req, res, next, gettodo) => {
     if (!util.validId(gettodo)) {
-      res.send('Please supplse a valid id.');
+      res.send('Please supply a valid id.');
     }
     util.doGetToDo(gettodo).then((results) => {
       res.json(results);
     }, next);
   },
 
-  // Update a todo
   putToDo: (req, res, next, puttodo) => {
     if (!util.validId(puttodo) || !req.body.content) {
       res.send('Please supply a valid id and content.');
@@ -30,9 +28,7 @@ module.exports = {
     }, next);
   },
 
-  // Post a new todo
   postToDo: (req, res, next) => {
-    // Create a new ToDo document for MonogoDB
     if (!req.body.content || !req.body.author) {
       res.send('Malformed To-Do. Try again');
     } else {
@@ -40,7 +36,6 @@ module.exports = {
         content: req.body.content,
         author: req.body.author.toLowerCase(),
       });
-      // Save ToDo to MonogoDB
       util.doPostToDo(newToDo).then((result) => {
         const message = result.content;
         // eslint-disable-next-line no-underscore-dangle
@@ -50,7 +45,6 @@ module.exports = {
     }
   },
 
-  // Delete a todo
   deleteToDo: (req, res, next, deletetodo) => {
     if (!util.validId(deletetodo)) {
       res.send('Please supply a valid id.');
