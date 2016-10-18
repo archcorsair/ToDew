@@ -1,6 +1,5 @@
 const ToDo = require('../models/todoModel.js');
 const util = require('./utils.js');
-const mongoose = require('mongoose');
 
 module.exports = {
 
@@ -12,21 +11,22 @@ module.exports = {
   },
 
   getToDo: (req, res, next, gettodo) => {
-    if (gettodo.length !== 24) {
+    if (!util.validId(gettodo)) {
       res.send('Malformed ID. Try again');
     }
-
-    // Converts the gettodo string into a proper ObjectId
-    const currentId = new mongoose.Types.ObjectId(gettodo);
-
-    util.doGetToDo(currentId).then((results) => {
+    util.doGetToDo(gettodo).then((results) => {
       res.json(results);
     }, next);
   },
 
   putToDo: (req, res, next, puttodo) => {
-    res.send(`Updating todo with id: ${puttodo}`);
-    next();
+    if (!util.validId(puttodo) || !req.body.content) {
+      res.send('Please supply a valid Id and content.');
+    }
+    const content = req.body.content;
+    util.doPutToDo(puttodo, content).then((results) => {
+      res.json(results);
+    }, next);
   },
 
   postToDo: (req, res, next) => {

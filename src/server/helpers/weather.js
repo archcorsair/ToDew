@@ -9,10 +9,12 @@ function printMessage(temp, location, feelsLike, relHumidity, wind, lastUpdated)
 Feels like: ${feelsLike}F\nRelative Humidity: ${relHumidity}\nWind: ${wind}\n${lastUpdated}`;
   console.log(message);
 }
+
 // Print out error messages
 function printError(error) {
   console.error(error.message);
 }
+
 function get(searchTerm) {
   // Connect to Wunderground API
   const request = http.get(`http://api.wunderground.com/api/${config.apiKey}/conditions/q/${state || ''}/${searchTerm}.json`, (response) => {
@@ -24,7 +26,6 @@ function get(searchTerm) {
         try {
           // Parse data
           const weather = JSON.parse(body);
-          // Temporary way to handle Multi-result search. State search no implemented yet.
           if (weather.results || weather.response.results) {
             console.log(`Your search term (${searchTerm}) returned multiple results.
 Try adding the state at the end of your search. Example: Portland OR`);
@@ -53,4 +54,5 @@ Try adding the state at the end of your search. Example: Portland OR`);
   request.on('error', () => printError);
 }
 
+// Only exporting get()
 module.exports.get = get;
