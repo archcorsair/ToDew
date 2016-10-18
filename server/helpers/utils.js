@@ -25,7 +25,6 @@ module.exports = {
     return ToDo.findById({ _id: currentId }).remove();
   },
 
-  // Wrapped the return to satisfy linter :P
   validId: id => (id.length === 24 ? true : false),
 
 };

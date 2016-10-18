@@ -1,6 +1,16 @@
 <div ng-controller="HomepageController">
-  <script type="text/ng-template" id="alert.html">
-    <div ng-transclude></div>
-  </script>
   <h1 class='header-homepage'>To Dew 💧</h1>
+  <div class='weather-view'><center><img src='app/assets/sun.svg'></img></center></div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="New Note" ng-model='newToDo'>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click='addToDo()'>Submit</button>
+      </span>
+    </div>
+    <div class="list-group todo-list">
+      <a href="" class="list-group-item" ng-class="{strike:todo.done}" ng-click='done()' ng-repeat='(key, value) in todos'>
+        {{value.content}}
+        <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+      </a>
+    </div>
 </div>
