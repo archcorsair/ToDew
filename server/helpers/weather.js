@@ -3,28 +3,23 @@ const config = require('../config');
 
 const state = '';
 
-// Print out messages
 function printMessage(temp, location, feelsLike, relHumidity, wind, lastUpdated) {
   const message = `The temperature in ${location} is ${temp}F.
 Feels like: ${feelsLike}F\nRelative Humidity: ${relHumidity}\nWind: ${wind}\n${lastUpdated}`;
   console.log(message);
 }
 
-// Print out error messages
 function printError(error) {
   console.error(error.message);
 }
 
 function get(searchTerm) {
-  // Connect to Wunderground API
   const request = http.get(`http://api.wunderground.com/api/${config.apiKey}/conditions/q/${state || ''}/${searchTerm}.json`, (response) => {
     let body = '';
-    // Read Data
     response.on('data', (chunk) => { body += chunk; });
     response.on('end', () => {
       if (response.statusCode === 200) {
         try {
-          // Parse data
           const weather = JSON.parse(body);
           if (weather.results || weather.response.results) {
             console.log(`Your search term (${searchTerm}) returned multiple results.
@@ -40,7 +35,6 @@ Try adding the state at the end of your search. Example: Portland OR`);
             );
           }
         } catch (error) {
-          // Parse error
           printError(error);
         }
       } else {
@@ -50,7 +44,6 @@ Try adding the state at the end of your search. Example: Portland OR`);
     });
   });
 
-  // Connection
   request.on('error', () => printError);
 }
 
