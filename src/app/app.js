@@ -1,9 +1,10 @@
-var app = angular.module('todew', ['ngRoute']);
+angular.module('todew', ['ngRoute', 'ui.bootstrap'])
 
-app.config(function($routeProvider) {
+.config(($routeProvider) => {
   $routeProvider
     .when('/', {
       templateUrl: 'app/partials/homepage.html',
-      controller: 'homepageController',
+      controllerAs: 'HomepageController',
+      // controller: 'HomepageController',
     });
 });
