@@ -2,6 +2,7 @@ const handler = require('./helpers/request-handler.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 // Replace Mongoose's outdated promise library
 mongoose.Promise = Promise;
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost/todewdev');
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', express.static(path.join(__dirname, '..', 'src')));
 
 // Handle params
 app.param('gettodo', handler.getToDo);
@@ -20,8 +22,12 @@ app.param('puttodo', handler.putToDo);
 app.param('deletetodo', handler.deleteToDo);
 app.param('author', handler.getAllToDos);
 
-// // // // Routes // // // //
-//                          //
+// // //   Routes   // // //
+//                        //
+//    Send index.html     //
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'src', 'index.html'));
+});
 // Get all todos by author  //
 app.get('/todos/author/:author', handler.getAllToDos);
 //
