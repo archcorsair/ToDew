@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To Dew</title>
+</head>
+<body ng-app='todew'>
+  <div data-ng-view>
+    <!-- Views get rendered here -->
+    {{ greeting }}
+  </div>
+</body>
+
+<script src='app/lib/angular.min.js'></script>
+<script src='app/lib/jquery.min.js'></script>
+<script src='app/lib/bootstrap.min.js'></script>
+<script src='app/lib/ui-bootstrap.min.js'></script>
+<script src='app/lib/angular-route.min.js'></script>
+
+<script src='app/app.js'></script>
+<script src='app/controllers/homepageController.js'></script>
+
+</html>

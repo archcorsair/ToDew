@@ -8,7 +8,7 @@
  * Tells you the weather
  * Has a *pretty** UI
  * Has a REST API
- * It works (maybe)
+ * It works ~~(maybe)~~
 
 ## Technologies used:
 1. [Wunderground's API](https://www.wunderground.com/) is used for live weather data.
