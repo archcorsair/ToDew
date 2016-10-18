@@ -20,6 +20,11 @@ module.exports = {
 
   doPostToDo: newToDo => newToDo.save(),
 
+  doDeleteToDo: (deletetodo) => {
+    const currentId = new mongoose.Types.ObjectId(deletetodo);
+    return ToDo.findById({ _id: currentId }).remove();
+  },
+
   // Wrapped the return to satisfy linter :P
   validId: id => (id.length === 24 ? true : false),
 

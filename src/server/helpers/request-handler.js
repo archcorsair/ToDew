@@ -12,7 +12,7 @@ module.exports = {
 
   getToDo: (req, res, next, gettodo) => {
     if (!util.validId(gettodo)) {
-      res.send('Malformed ID. Try again');
+      res.send('Please supplse a valid id.');
     }
     util.doGetToDo(gettodo).then((results) => {
       res.json(results);
@@ -21,7 +21,7 @@ module.exports = {
 
   putToDo: (req, res, next, puttodo) => {
     if (!util.validId(puttodo) || !req.body.content) {
-      res.send('Please supply a valid Id and content.');
+      res.send('Please supply a valid id and content.');
     }
     const content = req.body.content;
     util.doPutToDo(puttodo, content).then((results) => {
@@ -39,15 +39,21 @@ module.exports = {
         author: req.body.author,
       });
       // Save ToDo to MonogoDB
-      util.doPostToDo(newToDo).then(() => {
-        res.sendStatus(201);
+      util.doPostToDo(newToDo).then((result) => {
+        const message = result.content;
+        res.send(`You posted a note:\n${message}`);
       }, next);
     }
   },
 
   deleteToDo: (req, res, next, deletetodo) => {
-    res.send(`Deleting todo with id: ${deletetodo}`);
-    next();
+    if (!util.validId(deletetodo)) {
+      res.send('Please supply a valid id.');
+    } else {
+      util.doDeleteToDo(deletetodo).then(() => {
+        res.send('Your note has been deleted');
+      }, next);
+    }
   },
 
 };
