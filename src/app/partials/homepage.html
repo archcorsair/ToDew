@@ -26,13 +26,13 @@
 </nav>
   <div class='weather-view'>
     <center><img src='app/assets/sun.svg'></img><br />
-      Good Afternoon
+      Good Evening
     </center>
   </div>
 
     <div class="list-group todo-list">
-      <a href="" class="list-group-item" ng-class="{strike:todo.done}" ng-click='done()' ng-repeat='todo in todos'>
-        {{todo}}
+      <a href="" id="{{value._id}}" class="list-group-item" ng-class="{strike:todo.done}" ng-click='deleteTodo()' ng-repeat='(key, value) in todos'>
+        {{value.content}}
         <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
       </a>
     </div>

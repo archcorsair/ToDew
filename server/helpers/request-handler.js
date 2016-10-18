@@ -40,7 +40,8 @@ module.exports = {
         const message = result.content;
         // eslint-disable-next-line no-underscore-dangle
         const id = result._id;
-        res.send(`You posted a note:\n"${message}"\nNote ID: ${id}`);
+        const responseObject = { content: message, id };
+        res.json(responseObject);
       }, next);
     }
   },

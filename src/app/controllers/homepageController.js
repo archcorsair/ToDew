@@ -6,9 +6,9 @@ angular.module('todew')
       method: 'GET',
       url: `/todos/author/${authorName}`,
     }).then((response) => {
-      // $log.log('response: ', response.data);
+      $log.log(response);
       response.data.forEach((todo) => {
-        $scope.todos.push(todo.content);
+        $scope.todos.push(todo);
       });
     }, (error) => {
       $log.error(error);
@@ -16,17 +16,33 @@ angular.module('todew')
   };
 
   $scope.setAuthorAndGetData = () => {
+    $scope.todos = [];
     $scope.currentAuthor = $scope.authorName;
     $scope.getData($scope.authorName.toLowerCase());
   };
 
   $scope.addToDo = () => {
-    $log.log('Adding a todo!', $scope.newToDo);
-    $scope.newToDo = '';
+    if (!$scope.currentAuthor) {
+      $log.error('No Username Specified!');
+    } else {
+      $http({
+        method: 'POST',
+        url: '/todos',
+        data: { author: $scope.currentAuthor, content: $scope.newToDo },
+      }).then((response) => {
+        $scope.todos.push(response.data);
+      }, (error) => {
+        $log.error(error);
+      });
+      $scope.newToDo = '';
+    }
   };
 
-  $scope.done = () => {
-    $scope.todo.done = true;
+  $scope.deleteToDo = () => {
+    // if (!$scope.currentAuthor) {
+    //   $log.error('No Username Specified!');
+    // } else {
+    //
+    // }
   };
-  $scope.todos = [];
 });
