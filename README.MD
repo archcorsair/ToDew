@@ -2,12 +2,15 @@
 
 ### Your Friendly Weather/To-Do App
 
+![To Dew](http://i.imgur.com/jgTWO2U.png)
+
 #### Features
 
  * Gently informs you of today's tasks
  * Beautifully displays the current weather
  * Pleasant UI
  * REST API
+ * Chrome Extension
 
 
 ## Technologies used:
@@ -21,4 +24,3 @@
 
 ## License
 This project is licensed under the terms of MIT License.
-
