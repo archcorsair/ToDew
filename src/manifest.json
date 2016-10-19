@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name"            : "To Dew",
+  "description"     : "Your Friendly Weather/To-Do App with REST api",
+  "short_name"      : "To Dew",
+  "version"         : "0.1",
+  "browser_action": {
+    "default_popup": "extension.html",
+    "default_icon" : "app/assets/logo.png"
+  },
+  "chrome_url_overrides" : {
+  "newtab": "index.html"
+},
+  "permissions": [
+    "debugger",
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
