@@ -18,7 +18,7 @@
 3. [Angular](https://angularjs.org/) for front end.
 4. [Bootstrap](http://getbootstrap.com/) because I like it.
 5. [MongoDB](https://www.mongodb.com/) for storing data.
-6. [Stormpath](https://stormpath.com/) for authentication. (When I get around to it)
+6. [Auth0](https://auth0.com/) for authentication. (When I get around to it)
 
 ## License
 This project is licensed under the terms of MIT License.
