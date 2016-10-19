@@ -1,6 +1,4 @@
-# To Dew :droplet:
-
-### Your Friendly Weather/To-Do App
+![Logo](http://imgur.com/rPKj5jF.png)
 
 ![To Dew](http://i.imgur.com/jgTWO2U.png)
 
