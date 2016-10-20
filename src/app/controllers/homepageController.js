@@ -30,6 +30,11 @@ angular.module('todew')
         data: { author: $scope.currentAuthor, content: $scope.newToDo },
       }).then((response) => {
         $scope.todos.push(response.data);
+        // // // // // // // // // // //
+        // TODO: Can't delete newly saved todo until refresh.
+        // // // ID is not being pushed to $scope.todos :(
+        $log.log(response.data);
+        $log.log($scope.todos);
       }, (error) => {
         $log.error(error);
       });
@@ -47,8 +52,9 @@ angular.module('todew')
         url: `/todos/${id}`,
       }).then((response) => {
         $log.log(response.data);
-        // REALLY BAD WAY OF UPDATING THE PAGE :D
-        // TODO: FIX ME
+        // // // // // // // // // // //
+        // TODO: REALLY BAD WAY OF UPDATING THE PAGE :D
+        // // // FIX ME :D
         $scope.setAuthorAndGetData();
       }, (error) => {
         $log.error(error);
