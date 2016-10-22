@@ -4,9 +4,7 @@ const path = require('path');
 function router(app) {
   // Routes
   //
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'src', 'index.html'));
-  });
+  app.get('/', (req, res) => { res.sendFile(path.join(__dirname, '..', 'src', 'index.html')); });
   //
   // Get all todos by author
   app.get('/todos/author/:author', handler.getAllToDos);

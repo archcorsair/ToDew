@@ -1,6 +1,6 @@
 angular.module('todew')
 
-.controller('HomepageController', ($scope, $http, $log) => {
+.controller('HomepageController', ($scope, $http, $log, $window) => {
   $scope.getData = (authorName) => {
     $http({
       method: 'GET',
@@ -53,12 +53,23 @@ angular.module('todew')
       }).then((response) => {
         $log.log(response.data);
         // // // // // // // // // // //
-        // TODO: REALLY BAD WAY OF UPDATING THE PAGE :D
-        // // // FIX ME :D
+        // FIXME: REALLY BAD WAY OF UPDATING THE PAGE :D
+        // // //
         $scope.setAuthorAndGetData();
       }, (error) => {
         $log.error(error);
       });
     }
   };
+
+  const getLocation = () => {
+    if ('geolocation' in $window.navigator) {
+      $window.navigator.geolocation.getCurrentPosition((position) => {
+        $log.log('Your latitude: ', position.coords.latitude, 'Your longitude: ', position.coords.longitude);
+      });
+    } else {
+      $log.log('Sorry, geolocation is not available.');
+    }
+  };
+  getLocation();
 });
