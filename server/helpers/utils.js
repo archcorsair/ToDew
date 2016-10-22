@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const request = require('request-promise');
 const ToDo = require('../models/todoModel.js');
 
 mongoose.Promise = Promise;
@@ -24,6 +25,8 @@ module.exports = {
     const currentId = new mongoose.Types.ObjectId(deletetodo);
     return ToDo.findById({ _id: currentId }).remove();
   },
+
+  doGetWeather: (lat, long) => request(`http://api.wunderground.com/api/1bc7068cb0788422/geolookup/q/${lat},${long}.json`),
 
   validId: id => (id.length === 24 ? true : false),
 

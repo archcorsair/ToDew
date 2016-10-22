@@ -56,4 +56,13 @@ module.exports = {
     }
   },
 
+  getWeather: (req, res, next, location) => {
+    const parsedLocation = location.split(',');
+    const lat = parsedLocation[0];
+    const long = parsedLocation[1];
+    util.doGetWeather(lat, long).then((response) => {
+      console.log(response);
+    }, next);
+  },
+
 };

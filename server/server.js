@@ -22,6 +22,7 @@ app.param('gettodo', handler.getToDo);
 app.param('puttodo', handler.putToDo);
 app.param('deletetodo', handler.deleteToDo);
 app.param('author', handler.getAllToDos);
+app.param('location', handler.getWeather);
 
 // Routes
 router(app);

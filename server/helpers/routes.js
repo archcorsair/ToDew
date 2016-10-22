@@ -21,6 +21,9 @@ function router(app) {
   // Delete a todo by id
   app.delete('/todos/:deletetodo', handler.deleteToDo);
   //
+  // Get weather data
+  app.get('/weather/:location', handler.getWeather);
+  //
   // Get outta here!
   app.post('/*', (req, res) => { res.sendStatus(404); });
 }
