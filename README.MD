@@ -12,13 +12,13 @@
 
 
 ## Technologies used:
-1. [Wunderground's API](https://www.wunderground.com/) is used for live weather data.
+1. [DarkSky's API](https://darksky.net/dev/) is used for live weather data.
 6. [NodeJS](https://nodejs.org) for the backend.
 2. [Express](https://expressjs.com/) for HTTP portion of the backend.
 3. [Angular](https://angularjs.org/) for front end.
-4. [Bootstrap](http://getbootstrap.com/) because I like it.
+4. [Bootstrap](http://getbootstrap.com/) because pretty.
 5. [MongoDB](https://www.mongodb.com/) for storing data.
-6. [Auth0](https://auth0.com/) for authentication. (When I get around to it)
+6. [Auth0](https://auth0.com/) for authentication. (Not implemented yet)
 
 ## License
 This project is licensed under the terms of MIT License.
