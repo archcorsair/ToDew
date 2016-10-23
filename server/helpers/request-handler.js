@@ -66,7 +66,7 @@ module.exports = {
       const weatherData = {
         temperature: data.currently.temperature,
         conditions: data.currently.summary,
-        rainChange: data.currently.precipProbability,
+        rainChance: data.currently.precipProbability,
         icon: data.currently.icon,
       };
       res.json(weatherData);
