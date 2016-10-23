@@ -24,7 +24,7 @@ Your Friendly Weather App with Reminders
 7. [Auth0](https://auth0.com/) for authentication. (Not implemented yet)
 
 ## Project Status
-* [Issues](https://github.com/archcorsair/ToDew/issues)
+* [Issues Page](https://github.com/archcorsair/ToDew/issues)
 
 ## License
 This project is licensed under the terms of MIT License.
