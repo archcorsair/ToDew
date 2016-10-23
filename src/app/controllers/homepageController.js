@@ -66,7 +66,7 @@ angular.module('todew')
     'clear-day': 'wi-day-sunny',
     'clear-night': 'wi-night-clear',
     'partly-cloudy-day': 'wi-day-cloudy',
-    'partly-cloudy-night': 'wi-night-alt-partly-cloudy',
+    'partly-cloudy-night': 'wi-night-alt-cloudy',
     rain: 'wi-rain',
     snow: 'wi-snow',
     sleet: 'wi-sleet',
@@ -85,10 +85,9 @@ angular.module('todew')
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         $http.get(`/weather/${latitude},${longitude}`).then((response) => {
-          // $log.log(response.data);
           $scope.currentTemp = `${Math.floor(response.data.temperature)}°`;
           $scope.currentConditions = response.data.conditions;
-          $scope.weatherIcon = response.data.icon;
+          $scope.conditionIcon = conditionMap[response.data.icon];
           if (response.data.rainChance > 0) {
             $scope.changeOfRain = `Chance of Rain: ${response.data.rainChance}`;
           }
