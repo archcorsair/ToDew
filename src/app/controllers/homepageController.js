@@ -79,6 +79,14 @@ angular.module('todew')
     default: 'wi-na',
   };
 
+  const getGreeting = () => {
+    const theDate = new Date();
+    const theTime = theDate.getHours();
+    if (theTime < 12) { $scope.greeting = 'Good Morning'; }
+    if (theTime > 12 && theTime < 18) { $scope.greeting = 'Good Afternoon'; }
+    if (theTime > 18) { $scope.greeting = 'Good Evening'; }
+  };
+
   const getLocation = () => {
     if ('geolocation' in $window.navigator) {
       $window.navigator.geolocation.getCurrentPosition((position) => {
@@ -100,4 +108,5 @@ angular.module('todew')
     }
   };
   getLocation();
+  getGreeting();
 });
