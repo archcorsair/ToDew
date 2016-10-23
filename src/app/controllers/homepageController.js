@@ -64,13 +64,14 @@ angular.module('todew')
 
   const getLocation = () => {
     if ('geolocation' in $window.navigator) {
-      // const currentLocation = [];
       $window.navigator.geolocation.getCurrentPosition((position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        $log.log(`Your Location: ${latitude},${longitude}`);
-        // currentLocation.push(position.coords.latitude, position.coords.longitude);
-        $http.get(`/weather/${latitude},${longitude}`);
+        $http.get(`/weather/${latitude},${longitude}`).then((response) => {
+          $log.log(response.data);
+        }, (error) => {
+          $log.error(error);
+        });
       });
     } else {
       $log.log('Sorry, geolocation is not available in your browser.');

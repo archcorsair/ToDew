@@ -2,7 +2,7 @@
 
 ![To Dew](http://i.imgur.com/jgTWO2U.png)
 
-#### Features
+## Features
 
  * Gently informs you of today's tasks
  * Beautifully displays the current weather

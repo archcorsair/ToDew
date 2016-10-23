@@ -63,7 +63,13 @@ module.exports = {
     util.doGetWeather(lat, long).then((response) => {
       let data = null;
       data = JSON.parse(response);
-      console.log('Your Temp: ', data.currently.temperature, 'Your Conditions: ', data.currently.summary);
+      const weatherData = {
+        temperature: data.currently.temperature,
+        conditions: data.currently.summary,
+        rainChange: data.currently.precipProbability,
+        icon: data.currently.icon,
+      };
+      res.json(weatherData);
     }, next);
   },
 
