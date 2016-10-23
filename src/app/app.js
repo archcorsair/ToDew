@@ -1,4 +1,4 @@
-angular.module('todew', ['ngRoute', 'ui.bootstrap'])
+angular.module('todew', ['ngRoute', 'ui.bootstrap', 'ngAnimate'])
 
 .config(($routeProvider, $httpProvider) => {
   $routeProvider

@@ -25,7 +25,10 @@
   </div>
 </nav>
   <div class='weather-view'>
-    <center><i class='wi {{ conditionIcon }}'></i><div class='temperature'>{{ currentTemp }} {{ currentConditions }} {{ chanceOfRain }}</div><br />
+    <center>
+      <div class='loading-icon text-warning'><i class='wi wi-day-sunny spin-me'></i><br />Peeking out the window</div>
+      <i class='wi {{ conditionIcon }}'></i>
+      <div class='temperature'>{{ currentTemp }} {{ currentConditions }} {{ chanceOfRain }}</div><br />
       {{ greeting }} {{ currentAuthor }}
     </center>
   </div>

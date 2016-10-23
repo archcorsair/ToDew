@@ -83,7 +83,7 @@ angular.module('todew')
     const theDate = new Date();
     const theTime = theDate.getHours();
     if (theTime < 12) { $scope.greeting = 'Good Morning'; }
-    if (theTime > 12 && theTime < 18) { $scope.greeting = 'Good Afternoon'; }
+    if (theTime >= 12 && theTime < 18) { $scope.greeting = 'Good Afternoon'; }
     if (theTime > 18) { $scope.greeting = 'Good Evening'; }
   };
 
@@ -93,6 +93,7 @@ angular.module('todew')
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         $http.get(`/weather/${latitude},${longitude}`).then((response) => {
+          angular.element('.loading-icon').css('display', 'none');
           $scope.currentTemp = `${Math.floor(response.data.temperature)}°`;
           $scope.currentConditions = response.data.conditions;
           $scope.conditionIcon = conditionMap[response.data.icon];
@@ -105,8 +106,10 @@ angular.module('todew')
       });
     } else {
       $log.log('Sorry, geolocation is not available in your browser.');
+      $scope.currentConditions = 'Please allow your location to be shared & try again.';
     }
   };
+
   getLocation();
   getGreeting();
 });
