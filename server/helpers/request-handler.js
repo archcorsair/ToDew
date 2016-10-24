@@ -60,7 +60,9 @@ module.exports = {
     const parsedLocation = location.split(',');
     const lat = parsedLocation[0];
     const long = parsedLocation[1];
-    util.doGetWeather(lat, long).then(JSON.parse).then((data) => {
+    util.doGetWeather(lat, long).then((response) => {
+      let data = null;
+      data = JSON.parse(response.body);
       const weatherData = {
         temperature: data.currently.temperature,
         conditions: data.currently.summary,
