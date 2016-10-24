@@ -1,5 +1,8 @@
+/*  @flow */
+
 const handler = require('../helpers/request-handler.js');
 const path = require('path');
+
 
 function router(app) {
   // Routes

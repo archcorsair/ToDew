@@ -97,8 +97,11 @@ angular.module('todew')
           $scope.currentTemp = `${Math.floor(response.data.temperature)}°`;
           $scope.currentConditions = response.data.conditions;
           $scope.conditionIcon = conditionMap[response.data.icon];
+          $log.log('Current rain chance: ', response.data.rainChance);
           if (response.data.rainChance > 0) {
-            $scope.changeOfRain = `Chance of Rain: ${response.data.rainChance}`;
+            $log.log('Chance of Rain!');
+            $scope.chanceOfRainL1 = 'Spotted some rainclouds:';
+            $scope.chanceOfRainL2 = `${response.data.rainChance}% Chance of Rain`;
           }
         }, (error) => {
           $log.error(error);

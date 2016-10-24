@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const request = require('request-promise');
+const got = require('got');
 const config = require('../config.js');
 const ToDo = require('../models/todoModel.js');
 
@@ -27,7 +27,7 @@ module.exports = {
     return ToDo.findById({ _id: currentId }).remove();
   },
 
-  doGetWeather: (lat, long) => request(`https://api.darksky.net/forecast/${config.apiKey}/${lat},${long}`),
+  doGetWeather: (lat, long) => got(`https://api.darksky.net/forecast/${config.apiKey}/${lat},${long}`),
 
   validId: id => (id.length === 24 ? true : false),
 

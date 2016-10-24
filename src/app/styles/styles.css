@@ -13,6 +13,10 @@ padding-top: 70px;
   font-size: 0.8em;
 }
 
+.condition-icon {
+  margin-top: 5px;
+}
+
 .spin-me {
   animation-name: spin;
   animation-duration: 5000ms;
