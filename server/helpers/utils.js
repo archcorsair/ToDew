@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const got = require('got');
 const config = require('../config.js');
 const ToDo = require('../models/todoModel.js');
+const Redis = require('redisng');
 
 mongoose.Promise = Promise;
 

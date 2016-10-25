@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const router = require('./helpers/routes');
+const Redis = require('redisng');
+
+// Connect to Redis Server
+const redis = new Redis();
+redis.connect().catch((e) => { console.log('Redis Connection Error: ', e); });
 
 // Replace Mongoose's outdated promise library
 mongoose.Promise = Promise;
