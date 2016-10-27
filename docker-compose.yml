@@ -1,0 +1,20 @@
+version: "2"
+services:
+  redis-cache:
+    container_name: redis-cache
+    hostname: redis-cache
+    image: redis:3
+    restart: always
+    ports:
+      - 6379:6379
+  mongodb:
+    container_name: mongodb
+    hostname: mongodb
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - AUTH=no
+    volumes:
+      - ./mongodb_data:/data/db

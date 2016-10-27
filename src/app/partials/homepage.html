@@ -34,7 +34,7 @@
   </div>
 
     <div class="list-group todo-list">
-      <a href="" ng-cloak class="list-group-item" ng-class="{strike:todo.done}"  ng-repeat='(key, value) in todos'>
+      <a href="" ng-cloak class="list-group-item" ng-class="{strike:todo.done}" ng-repeat='(key, value) in todos'>
         {{value.content}}
         <span class="glyphicon glyphicon-remove text-danger" id="{{value._id}}" aria-hidden="true" ng-click='deleteTodo($event)'></span>
       </a>

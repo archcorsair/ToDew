@@ -11,3 +11,4 @@ config.js
 # Assets
 bg
 lib
+mongodb_data

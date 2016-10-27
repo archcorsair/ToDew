@@ -30,6 +30,6 @@ module.exports = {
 
   doGetWeather: (lat, long) => got(`https://api.darksky.net/forecast/${config.apiKey}/${lat},${long}`),
 
-  validId: id => (id.length === 24 ? true : false),
+  validId: id => (id.length === 24),
 
 };

@@ -9,12 +9,16 @@ padding-top: 70px;
   font-size: 6em;
 }
 
+.temperature {
+  margin-top: 7px;
+}
+
 .loading-icon {
   font-size: 0.8em;
 }
 
 .condition-icon {
-  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .spin-me {
