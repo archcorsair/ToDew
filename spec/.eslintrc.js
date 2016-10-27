@@ -5,4 +5,7 @@ module.exports = {
       optionalDependencies: false,
     }],
   },
+  env: {
+    jasmine: true,
+  }
 };
